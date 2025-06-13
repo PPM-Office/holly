@@ -40,6 +40,8 @@ async fn entry(clear_cookies: bool) -> WebDriverResult<()> {
         client.dump_cookies().await.unwrap();
     }
     client.dump_cookies().await.unwrap();
+    info!("Pause for captcha: 60 seconds");
+    tokio::time::sleep(std::time::Duration::from_secs(60)).await;
     if let Some(pin) = config.e2ee_pin {
         client.enter_e2ee_pin(pin).await;
     }
@@ -312,6 +314,7 @@ async fn entry(clear_cookies: bool) -> WebDriverResult<()> {
 
 #[tokio::main]
 async fn main() {
+    dotenvy::dotenv().ok();
     println!("Starting Holly core...");
 
     if std::env::var("RUST_LOG").is_err() {
