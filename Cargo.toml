@@ -18,3 +18,4 @@ env_logger = { version = "*" }
 unidecode = { version = "0.3.0" }
 dialoguer = { version = "0.11.0" }
 atty = { version = "0.2" }
+dotenvy = { version = "0.15.7" }
